@@ -8,4 +8,4 @@
           ansible.builtin.systemd:
             name: cron.service
           register: cronservice
-        - debug: msg="{{cronservice.status.ActiveState}}"
+        - debug: msg=" {{cronservice.status.ActiveState}} "
