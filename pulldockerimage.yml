@@ -1,0 +1,16 @@
+---
+- hosts: ansible_clients
+  become: yes
+  tasks:
+    - name: Check IP of Server
+      shell:
+        "ifconfig"
+      register: ipcommand
+      tags: ipcommand
+
+    - debug: msg="{{ipcommand.stdout}}"
+
+    - name: pull an image
+      docker_image:
+        name: atlassian/jira-software
+        source: pull
