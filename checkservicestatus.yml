@@ -1,0 +1,11 @@
+---
+    - hosts: ansible_clients
+      #become: yes
+      #become_method: sudo
+      #become_user: gauthamshetsa
+      tasks:
+        - name: Check service status
+          ansible.builtin.systemd:
+            name: cron.service
+          register: cronservice
+        - debug: msg="{{cronservice.status.ActiveState}}"
